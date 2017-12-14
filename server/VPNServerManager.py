@@ -1,4 +1,5 @@
 import os
+import json
 import random
 from twisted.web.static import File
 from twisted.internet import reactor, ssl
@@ -50,7 +51,11 @@ class VPNServerManager(Resource):
         return bytes(response, encoding='utf8')
 
     def servers_json(self, request):
-        response = "[{'name': 'dev.severedsec.com', 'IP': '45.79.156.23', 'status': 'online', 'config': '/configs/dev'}]"
+        """
+        :param request:
+        :return: a list of servers hosted by severedsec as a JSON
+        """
+        response = '[{"name": "dev.severedsec.com", "IP": "45.79.156.23", "status": "online", "config": "/configs/dev.ovpn"}]'
         return bytes(response, encoding='utf8')
 
     # 404 error

@@ -15,6 +15,10 @@ class WindowsInstaller:
         self.install_openvpn()
 
     def is_admin(self):
+        """
+        checks to see if running account is an admin account
+        :return: True for admin, False for user
+        """
         try:
             rights = ctypes.windll.shell32.IsUserAnAdmin()
         except Exception as e:
@@ -28,8 +32,12 @@ class WindowsInstaller:
             return False
 
     def install_python_modules(self):
+        """
+        installs any required modules for the application to run
+        :return:
+        """
         for module in self.modules:
-            os.system("pip install {0}".format(module))
+            os.system("pip3 install {0}".format(module))
 
     def install_openvpn(self):
         http = urllib3.PoolManager()

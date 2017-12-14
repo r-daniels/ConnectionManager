@@ -5,7 +5,6 @@ import os
 class LinuxInstaller:
     """
     functions for installing python modules and openvpn on Linux operating systems
-
     """
 
     def __init__(self, modules):
@@ -29,7 +28,7 @@ class LinuxInstaller:
 
     def install_python_modules(self):
         for module in self.modules:
-            os.system("pip install {0}".format(module))
+            os.system("pip3 install {0}".format(module))
 
     def install_openvpn(self):
         os.system("apt-get install openvpn")
