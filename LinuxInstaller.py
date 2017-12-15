@@ -1,4 +1,5 @@
 import logging
+import pickle
 import os
 
 
@@ -6,12 +7,17 @@ class LinuxInstaller:
     """
     functions for installing python modules and openvpn on Linux operating systems
     """
-
     def __init__(self, modules):
         self.modules = modules
+        self.create_config_file()
         self.is_admin()
         self.install_python_modules()
         self.install_openvpn()
+
+    def create_config_file(self):
+
+        with open('config.p', 'wb') as config:
+            pickle.dump({"install complete": False}, config)
 
     def is_admin(self):
         try:

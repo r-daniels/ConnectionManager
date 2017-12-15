@@ -7,12 +7,14 @@ import os
 class WindowsInstaller:
     """
     functions for installing python modules and openvpn on windows operating systems
+
+    should check to see if openvpn is installed and
     """
     def __init__(self, modules):
         self.modules = modules
         self.is_admin()
-        self.install_python_modules()
-        self.install_openvpn()
+        #self.install_python_modules()
+        #self.install_openvpn()
 
     def is_admin(self):
         """

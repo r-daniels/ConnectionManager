@@ -13,7 +13,10 @@ sslContext = ssl.DefaultOpenSSLContextFactory(
 
 
 class VPNServerManager(Resource):
-
+    """
+    this server will run on several trusted servers in order to allow clients the ability to access the list of
+    available vpns and other information to determine what form of communication to use.
+    """
     def __init__(self):
         Resource.__init__(self)
         self.serverRoot = os.getcwd()
@@ -22,6 +25,9 @@ class VPNServerManager(Resource):
 
     def getChild(self, name, request):
         return self
+
+    def render_POST(self, request):
+        pass
 
     def render_GET(self, request):
         print(request.uri)
@@ -55,7 +61,8 @@ class VPNServerManager(Resource):
         :param request:
         :return: a list of servers hosted by severedsec as a JSON
         """
-        response = '[{"name": "dev.severedsec.com", "IP": "45.79.156.23", "status": "online", "config": "/configs/dev.ovpn"}]'
+        # response should be generated programatically
+        response = '[{"name": "dev.severedsec.com", "IP": "45.79.156.23", "status": "online", "config": "/configs/dev.ovpn", "location": "NJ"}]'
         return bytes(response, encoding='utf8')
 
     # 404 error
